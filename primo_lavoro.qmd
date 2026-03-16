@@ -1,0 +1,10 @@
+---
+title: "primo progetto"
+author: "Vera Gelli"
+date: today
+format: html
+editor: source
+---
+```{r}
+rm(list=ls())
+```
