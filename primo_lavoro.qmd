@@ -1,10 +1,163 @@
 ---
-title: "primo progetto"
-author: "Vera Gelli"
-date: today
-format: html
-editor: source
+title: "PRIMO LAVORO"
+author: Vera Gelli
+format:
+  html:
+    toc: true
+execute:
+  cache: true
+  echo: false
+embed-resources: true
+bibliography: bibliography.bib
+csl: apa.csl
 ---
+
+# CHE PAURA LA [MATEMATICA]{style="color:green;"}
+
+![](matofobia_900x760.jpg){fig-align="center"}
+
 ```{r}
+#| results: hide
+
 rm(list=ls())
+
+library(readxl)
+Sara_dataset <- read_xls("Sara_dataset.xls")
+
+summary("Sara_dataset.xls")
+dim(Sara_dataset)
+summary(Sara_dataset)
+
+media_mq <- round(mean(Sara_dataset$mathquiz, na.rm = TRUE),2)
+
+
+table(Sara_dataset$gender)
+table(Sara_dataset$major)
+
+media_phobiaFEM <- round(mean(Sara_dataset$phobia[Sara_dataset$gender == "1"], na.rm = TRUE), 2)
+
+media_phobiaMASC <- round(mean(Sara_dataset$phobia[Sara_dataset$gender == "2"], na.rm = TRUE), 2)
+
+media_pmqFEM <- round(mean(Sara_dataset$prevmath[Sara_dataset$gender == "1"], na.rm = TRUE), 2)
+media_pmqMASC <- round(mean(Sara_dataset$prevmath[Sara_dataset$gender == "2"], na.rm = TRUE), 2)
+
+media_mqFEM <- round(mean(Sara_dataset$mathquiz[Sara_dataset$gender == "1"], na.rm = TRUE), 2)
+media_mqMASC <- round(mean(Sara_dataset$mathquiz[Sara_dataset$gender == "2"], na.rm = TRUE), 2)
+
+media_sqFEM <- round(mean(Sara_dataset$statquiz[Sara_dataset$gender == "1"], na.rm = TRUE), 2)
+media_sqMASC <- round(mean(Sara_dataset$statquiz[Sara_dataset$gender == "2"], na.rm = TRUE), 2)
+
+
+media_hr_baseFEM <- round(mean(Sara_dataset$hr_base[Sara_dataset$gender == "1"], na.rm = TRUE), 2)
+media_hr_baseMASC <- round(mean(Sara_dataset$hr_base[Sara_dataset$gender == "2"], na.rm = TRUE), 2)
+
+media_hr_preFEM <- round(mean(Sara_dataset$hr_pre[Sara_dataset$gender == "1"], na.rm = TRUE), 2)
+media_hr_preMASC <- round(mean(Sara_dataset$hr_pre[Sara_dataset$gender == "2"], na.rm = TRUE), 2)
+
+media_hr_postFEM <- round(mean(Sara_dataset$hr_post[Sara_dataset$gender == "1"], na.rm = TRUE), 2)
+media_hr_postMASC <- round(mean(Sara_dataset$hr_post[Sara_dataset$gender == "2"], na.rm = TRUE), 2)
+
+media_anx_baseFEM <- round(mean(Sara_dataset$anx_base[Sara_dataset$gender == "1"], na.rm = TRUE), 2)
+media_anx_baseMASC <- round(mean(Sara_dataset$anx_base[Sara_dataset$gender == "2"], na.rm = TRUE), 2)
+
+media_anx_preFEM <- round(mean(Sara_dataset$anx_pre[Sara_dataset$gender == "1"], na.rm = TRUE), 2)
+media_anx_preMASC <- round(mean(Sara_dataset$anx_pre[Sara_dataset$gender == "2"], na.rm = TRUE), 2)
+
+media_anx_postFEM <- round(mean(Sara_dataset$anx_post[Sara_dataset$gender == "1"], na.rm = TRUE), 2)
+media_anx_postMASC <- round(mean(Sara_dataset$anx_post[Sara_dataset$gender == "2"], na.rm = TRUE), 2)
+
 ```
+
+# [Analisi:]{style="color:pink;"}
+
+Per prima cosa siamo andate a gauardare la forma del file. Questo file contiene 12 variabili e 150 osservaioni, quindi 12 righe e 150 colonne.così da riuscire a calcolare quello di cui abbiamo bisogno. Le fammine sono 57 e i maschi sono 43. Gli studenti di psicologia sono 29, quelli di medicina sono 25, quelli di biologia sono 21, da sociologia sono 15 e 10 di economia. L'esperimento prevedeva 4 condizioni sperimentali, in base alla difficoltà dei test somministrati: da facile a difficile. La media del mathtest è `r round(mean(Sara_dataset$mathquiz, na.rm = TRUE),2)` oppure da oggetto `r media_mq` .
+
+### Prima di fare i test
+
+#### PHOBIA
+
+I punteggi ottenuti al test di autovalutazione di fobia per la matematica in base al genere sono `r media_phobiaFEM` per le femmine e `r media_phobiaMASC` per i maschi. Possiamo notare che in media le femmine si dicono più spavenate dalla matematica ripsetto ai maschi.
+
+#### NUMERO DI CORSI DI MATEMATICA FRENQUENATI
+
+In media le femmine frequentano `r media_pmqFEM` di matematica e i maschi `r media_pmqMASC`, quindi mediamnete i maschi seguono più corsi di matematica rispetto alle femmine.
+
+### Analizziamo la media dei risultati otteniti ai test in base alla differenza di genere
+
+#### TEST DI MATEMATICA
+
+Per quanto riguarda i test di matematica i maschi hanno ottenuto un punteggio di `r media_mqMASC`, leggermente minore rispetto alle femmine che mediamente hanno ottenuto `r media_mqFEM`.
+
+#### TEST DI STATISTICA
+
+Per quanto concerne il test di statistica i punteggi non sono differiscono di meno, e i maschi hanno ottenuto punteggi più alti; infatti il punteggio medio è di `r media_sqMASC` e le femmine invece `r media_sqFEM`.
+
+### Auto-valutaziobe battito cardiaco
+
+Le femmine nella condizione normale mediamente le femmine hanno una frequenza cardiaca di `r media_hr_baseFEM` e i maschi `r media_hr_baseMASC`. Questo indice fisologico è stato anche calcolato prima endopo il test: i maschi prima mediamnte hanno un battitto cardiaco di `r media_hr_preMASC` e dopo invece di `r media_hr_postMASC` e le femmine prima di `r media_hr_preFEM` e dopo di `r media_hr_postFEM`, non mostrando nè nelle femmin nè nei maschi una variazione così significativa nel battito.
+
+### punteggi test test sull'ansia
+
+Per quanto riguarda i test sull'ansia fatti in condizione base, prima e dopo, le femmine mediamente in condizioni normali `r media_anx_baseFEM` , prima `r media_anx_preFEM` e dopo `r media_anx_postFEM`. I maschi invece in condizioni normali `r media_anx_baseMASC`, prima `r media_anx_preMASC` e dopo `r media_anx_postMASC`.
+
+```{r}
+mean_mq_mjor <- round(aggregate(mathquiz ~ major, data = Sara_dataset, FUN = mean), 2)
+sd_mq_mjor <- round(aggregate(mathquiz ~ major, data = Sara_dataset, FUN = sd), 2)
+```
+
+# Analizziamo più nel dettaglio due variabili per confrontarle
+
+Andiamo a vedere quanta variabilità c'è nei risultati del test di matematica nelle varie facoltà:
+
+:::::::: columns
+::: {.column width="50%"}
+[FACOLTÀ]{style="color:red;"}
+
+Psicologia
+
+Medicina
+
+Biologia
+
+Sociologia
+
+Economia
+:::
+
+:::::: {.column width="50%"}
+[MEDIA E DEVIAZIONE STANDARD]{style="color:blue;"}
+
+::::: columns
+::: {.column width="30%"}
+29.60
+
+31.05
+
+24.21
+
+28.00
+
+35.38
+:::
+
+::: {.column width="70%"}
+8.94
+
+8.18
+
+10.40
+
+10.44
+
+6.30
+:::
+:::::
+::::::
+::::::::
+
+@lopez2019process
+
+# [CITAZIONI]{style="color:PURPLE;"}
+
+
+
