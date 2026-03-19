@@ -78,7 +78,7 @@ Per prima cosa siamo andate a gauardare la forma del file. Questo file contiene 
 
 I punteggi ottenuti al test di autovalutazione di fobia per la matematica in base al genere sono `r media_phobiaFEM` per le femmine e `r media_phobiaMASC` per i maschi. Possiamo notare che in media le femmine si dicono più spavenate dalla matematica ripsetto ai maschi.
 
-#### NUMERO DI CORSI DI MATEMATICA FRENQUENATI
+#### NUMERO DI CORSI DI MATEMATICA FREQUENTATI
 
 In media le femmine frequentano `r media_pmqFEM` di matematica e i maschi `r media_pmqMASC`, quindi mediamnete i maschi seguono più corsi di matematica rispetto alle femmine.
 
